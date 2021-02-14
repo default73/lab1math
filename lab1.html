@@ -59,6 +59,20 @@ function union(mass1, mass2){
 }
 
 
+function peresech(mass1, mass2){
+	var result = [];
+	for(var i = 0; i < mass1.length; i++){
+		if (mass2.includes(mass1[i], 0) == true){
+			result.push(mass1[i])
+		}
+	}
+
+	var result = result.join(' '); 
+	console.log(result);
+	return "Результат пересечения первого и второго массива: " + result;
+}
+
+
 function rasch(){
 	var mass1 = document.getElementById('mass1').value;
 	mass1 = mass1.trim();
@@ -75,7 +89,7 @@ function rasch(){
 		return;
 	
 	document.getElementById('result1').innerHTML = union(mass1, mass2);
-	
+	document.getElementById('result2').innerHTML = peresech(mass1, mass2);
 }
 
 </script>
@@ -87,6 +101,7 @@ function rasch(){
 	</form>
 	
 	<div id='result1'></div>
+	<div id='result2'></div>
 	
 	</dir>
 	
