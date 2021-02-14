@@ -6,7 +6,7 @@
 <body>
 	
 	<dir>Введите два массива, содержащий один или несколько по 4 символа:</dir>
-	<dir>Первый - цифра</dir>
+	<dir>Первый - любая цифра</dir>
 	<dir>Второй - четная цифра</dir>
 	<dir>Третий - нечетная цифра</dir>
 	<dir>Четвертый - Буква</dir>
@@ -73,6 +73,39 @@ function peresech(mass1, mass2){
 }
 
 
+function dopoln(mass1, mass2){
+	var result = [];
+	for(var i = 0; i < mass1.length; i++){
+		if (mass2.includes(mass1[i], 0) != true){
+			result.push(mass1[i])
+		}
+	}
+
+	var result = result.join(' '); 
+	console.log(result);
+	return "Результат дополнения(разности) первого и второго массива: " + result;
+}
+
+
+function simrazn(mass1, mass2){
+	var result = [];
+	for(var i = 0; i < mass1.length; i++){
+		if (result.includes(mass1[i], 0) != true && mass2.includes(mass1[i], 0) != true){
+			result.push(mass1[i])
+		}
+	}
+	for(var i = 0; i < mass2.length; i++){
+		if (result.includes(mass2[i], 0) != true && mass1.includes(mass2[i], 0) != true){
+			result.push(mass2[i])
+		}
+	}
+
+	var result = result.join(' '); 
+	console.log(result);
+	return "Результат симетрической разности первого и второго массива: " + result;
+}
+
+
 function rasch(){
 	var mass1 = document.getElementById('mass1').value;
 	mass1 = mass1.trim();
@@ -90,6 +123,8 @@ function rasch(){
 	
 	document.getElementById('result1').innerHTML = union(mass1, mass2);
 	document.getElementById('result2').innerHTML = peresech(mass1, mass2);
+	document.getElementById('result3').innerHTML = dopoln(mass1, mass2);
+	document.getElementById('result4').innerHTML = simrazn(mass1, mass2);
 }
 
 </script>
@@ -102,6 +137,8 @@ function rasch(){
 	
 	<div id='result1'></div>
 	<div id='result2'></div>
+	<div id='result3'></div>
+	<div id='result4'></div>
 	
 	</dir>
 	
