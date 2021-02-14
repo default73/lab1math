@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+	
+	<dir>Введите два массива, содержащий один или несколько по 4 символа:</dir>
+	<dir>Первый - цифра</dir>
+	<dir>Второй - четная цифра</dir>
+	<dir>Третий - нечетная цифра</dir>
+	<dir>Четвертый - Буква</dir>
+	<script>
+	function validate(mass){
+	var reg = /^[0-9][02468][13579][a-zA-Z]$/;
+	var res = true;
+	var str = "";
+	var length = mass.length;
+	
+	for(var i = 0; i < length; i++){
+		if (mass[i] == ""){
+			mass.splice(i,1);
+			length = length - 1;
+			i = i - 1;
+		}
+	}
+	var length2 = length;
+	for(var i=0; i < length2; i++){
+		if (reg.test(mass[i]) != true){
+			console.log(mass[i]);
+			str += "Элемент введен с ошибкой";
+			res = false;
+		}
+		console.log(mass[i]);
+	}
+	if(res != true){
+		alert(str);
+	}
+
+	return res;
+	}
+
+function rasch(){
+	var mass1 = document.getElementById('mass1').value;
+	mass1 = mass1.trim();
+	mass1 = mass1.split(' ');
+	
+	if( !validate(mass1) )
+		return;
+
+	var mass2 = document.getElementById('mass2').value;
+	mass2 = mass2.trim();
+	mass2 = mass2.split(' ');
+	
+	if( !validate(mass2) )
+		return;
+	
+}
+
+	</script>
+	<dir>
+	<form>
+	Массив A:<input type ='text' id = 'mass1' name=' '><br><br>
+    Массив B:<input type ='text' id = 'mass2' name=' '><br><br>
+	<input type='button' value='Рассчитать' onClick="rasch()">
+	</form>
+	</dir>
+
+
+</body>
+</html>
