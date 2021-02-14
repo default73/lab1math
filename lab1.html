@@ -10,7 +10,7 @@
 	<dir>Второй - четная цифра</dir>
 	<dir>Третий - нечетная цифра</dir>
 	<dir>Четвертый - Буква</dir>
-	<script>
+<script>
 	function validate(mass){
 	var reg = /^[0-9][02468][13579][a-zA-Z]$/;
 	var res = true;
@@ -39,6 +39,25 @@
 
 	return res;
 	}
+	
+	
+function union(mass1, mass2){
+	var result = [];
+	for(var i = 0; i < mass1.length; i++){
+		if (result.includes(mass1[i], 0) != true){
+			result.push(mass1[i])
+		}
+	}
+	for(var i = 0; i < mass2.length; i++){
+		if (result.includes(mass2[i], 0) != true){
+			result.push(mass2[i])
+		}
+	}
+	var result = result.join(' '); 
+	console.log(result);
+	return "Результат объединения первого и второго массива: " + result;
+}
+
 
 function rasch(){
 	var mass1 = document.getElementById('mass1').value;
@@ -55,16 +74,22 @@ function rasch(){
 	if( !validate(mass2) )
 		return;
 	
+	document.getElementById('result1').innerHTML = union(mass1, mass2);
+	
 }
 
-	</script>
+</script>
 	<dir>
 	<form>
 	Массив A:<input type ='text' id = 'mass1' name=' '><br><br>
     Массив B:<input type ='text' id = 'mass2' name=' '><br><br>
-	<input type='button' value='Рассчитать' onClick="rasch()">
+	<input type='button' value='Рассчитать' onClick="rasch()"><br><br>
 	</form>
+	
+	<div id='result1'></div>
+	
 	</dir>
+	
 
 
 </body>
